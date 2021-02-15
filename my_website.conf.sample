@@ -1,0 +1,17 @@
+server {
+	listen 80;
+
+	server_name local_webserver;
+    root /var/www/html;
+	autoindex off;
+
+	location /my_website {
+		index index.html index.php;
+		try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params; 
+        include fastcgi_default;
+    }
+}
