@@ -1,0 +1,21 @@
+services:
+    webserver:
+        build:
+            context: .
+            args:
+                - WWW_CONF=${WWW_CONF}
+        image: simple-docker-webserver
+        deploy:
+            resources:
+                limits:
+                    cpus: ${CPUS}
+                    memory: ${MEM}
+        container_name: titanserver-webserver
+        volumes:
+            - "./logs:/var/log/nginx"
+            - "${WEB_ROOT}:/var/www"
+        ports:
+            - "${PORT}:80"
+        restart: unless-stopped
+        environment:
+           - TZ=${TZ} 
