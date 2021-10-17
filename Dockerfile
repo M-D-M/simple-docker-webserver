@@ -10,8 +10,8 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update \
     && apt-get install -y tzdata php-fpm php-sqlite3 \
     && apt-get clean autoclean \
-	&& apt-get autoremove -y \
-	&& rm -rf /var/lib/apt/lists/*
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
 
 ARG WWW_CONF
 ENV TZ=${TZ}
